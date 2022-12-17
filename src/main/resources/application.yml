@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: API-Gateway
+
+
+
+
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: microservice-one
+          uri: lb://microservice-one
+          predicates:
+            - Path=/hello/**
+        - id: microservice-two
+          uri: lb://microservice-two
+          predicates:
+            - Path=/helloTwo/**
+
+server:
+  port: 9093
+eureka:
+  instance:
+    hostname: localhost
